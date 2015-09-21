@@ -1,0 +1,52 @@
+//first attempt at adding horn, trying to get rid of laugh at button
+
+var state = false;
+
+var x = 200;
+var y = 100;
+var s = 100;
+var q = 50;
+
+var laugh;
+var victory;
+
+function preload() {
+  laugh = loadSound('sounds/oldman.wav');
+  victory = loadSound('sounds/victory.wav');
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0);
+  //fill(0);
+ 
+  if (state) {
+    fill(0, 255, 0);
+  } else {
+    fill(0);
+  }
+  
+ 
+rect(200, 100, 100, 50);
+
+}
+
+  function mousePressed(){
+   if (!laugh.isPlaying()) {
+        laugh.play();
+    if (mouseX > 200 && mouseX < 300 && mouseY > 100 && mouseY < 150){
+      state = !state;
+        
+    if (!victory.isPlaying()) {
+      victory.play();
+    }
+    if (victory.isPlaying()) {
+      !laugh.play();
+    }
+  }
+  }
+
+}
