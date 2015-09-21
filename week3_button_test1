@@ -1,0 +1,18 @@
+//button appears mysteriously out of black background
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0);
+  fill(0);
+ 
+  
+  if(mouseX > 200 && mouseX < 300 && mouseY > 100 && mouseY < 150 && mouseIsPressed) {
+    //background(0, 255, 0);
+    fill(0, 255, 0);
+  }
+   rect(200, 100, 100, 50);
+
+}
