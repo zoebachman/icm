@@ -1,0 +1,60 @@
+//trying out a randomization of the rectangle
+
+var state = false;
+
+var x = 0;
+var y = 0;
+var s = 100;
+var q = 50;
+
+var laugh;
+var victory;
+
+function preload() {
+  laugh = loadSound('sounds/oldman.wav');
+  victory = loadSound('sounds/victory.wav');
+}
+
+function setup() {
+  createCanvas(400, 400);
+  var x = random (0, 400);
+  var y = random (0, 400);
+}
+
+function draw() {
+  background(0);
+ 
+  if (state) {
+    fill(0, 255, 0);
+  } else {
+    fill(0);
+  }
+  
+ 
+rect(x, y, 100, 50);
+
+}
+
+
+  function mousePressed(){
+   if (!laugh.isPlaying()) {
+      laugh.play();
+   } 
+    if (victory.isPlaying()) {
+      !laugh.isPlaying(); 
+    }
+   
+    if (mouseX > x && mouseX < x + s && mouseY > y && mouseY < y + q){
+      state = !state;
+      
+    if (!victory.isPlaying()) {
+      victory.play();
+   }
+   
+     if (victory.isPlaying()) {
+      !laugh.isPlaying(); 
+    }
+   
+  }
+
+}
