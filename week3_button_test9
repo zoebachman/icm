@@ -1,0 +1,63 @@
+//got random square to work, but now it's white
+
+var state = false;
+
+var x;
+var y;
+var s = 300;
+var q = 200;
+
+var laugh;
+var victory;
+
+function preload() {
+  laugh = loadSound('sounds/oldman.wav');
+  victory = loadSound('sounds/victory.wav');
+}
+
+function setup() {
+  createCanvas(400, 400);
+  background(0);
+  var x = random(1,400);
+  var y = random(1,400);
+  
+  rect(random(x), random(y), 300, 200);
+  
+}
+
+function draw() {
+  
+  
+
+  
+  if (state) {
+    fill(0, 255, 0);
+  } else {
+    fill(0);
+  }
+  
+ 
+
+
+}
+
+
+  function mousePressed(){
+   if (!laugh.isPlaying()) {
+      laugh.play();
+   } 
+    if (victory.isPlaying()) {
+      !laugh.isPlaying(); 
+    }
+   
+    if (mouseX > x && mouseX < x && mouseY > y && mouseY < y+q){
+      state = !state;
+      
+    if (!victory.isPlaying()) {
+      victory.play();
+   }
+   
+  
+  }
+
+}
