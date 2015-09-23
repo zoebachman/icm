@@ -1,0 +1,91 @@
+//each new canvas has laughs and a random location and a random color! 
+
+var state = false;
+
+//rectangle parameters
+var x, y, s, q;
+var r, g, b;
+
+//sounds
+var laugh;
+var victory;
+
+function preload() {
+  laugh = loadSound('sounds/oldman.wav');
+  victory = loadSound('sounds/victory.wav');
+}
+
+function setup() {
+  createCanvas(400, 400);
+  
+  s = random(50, 100);
+  q = random(50, 100);
+  x = random(0, width - s);
+  y = random(0, height - q);
+  
+  r = random(0, 255);
+  g = random(0, 255);
+  b = random(0, 255);
+  
+  }
+
+
+
+function draw() {
+  background(0);
+  
+ // if (state){
+   // reset();
+    //state = false;
+ // }
+    
+  if(state){
+   fill(r, g, b);
+  } else {
+    fill(0);
+  }
+  rect(x, y, s, q);
+  
+}
+//THIS IS NEW: reset scene
+//function reset(){
+//s = random(50,100);
+//q = random(50, 100);
+
+//x = random(0, width - s);
+//y = random(0, height - q);
+
+//r = random(0, 255);
+//g = random(0, 255);
+//b = random(0, 255);
+
+//}
+
+  function mousePressed(){
+    //laugh when you click in the wrong place
+   if (!laugh.isPlaying()) {
+      laugh.play();
+   } 
+   
+   //don't have laugh play when victory sound plays
+   if (victory.isPlaying()) {
+    !laugh.play(); 
+   }
+   //else {
+    
+   //}
+  
+   //switch code
+   if (mouseX > x && mouseX < x + s && mouseY > y && mouseY < y + q){
+    state = !state;
+    
+  
+    
+    if (!victory.isPlaying()) {
+      victory.play();
+    }
+   
+  
+  
+}
+}
